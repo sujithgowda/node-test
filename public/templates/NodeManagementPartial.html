@@ -1,0 +1,97 @@
+
+<div class="col-md-12" data-ng-show="mode=='nodelist'">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color: cadetblue">
+            <h3 class="panel-title">
+               Nodes
+            </h3>
+
+        </div>
+        <div class="panel-body" style="padding-left:20%">          
+
+            <button class="btn btn-primary btn-xs" data-ng-click="mode='addnewnode'" type="submit" style="width:20%;float:right">Add new node</button>
+            
+        </div>
+        <table class="table table-striped">
+            <thead style="background-color: darkgray">
+                <tr>
+                    <th>Node Name</th>
+                    <th>IP address</th>
+                    <th>status</th>
+                    <th>Action</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="node in blockChain.nodeDictionary" class="">
+                    <td>{{node.name}}</td>
+                    <td>{{node.ip}}</td>
+                    <td>active</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" data-ng-click="deleteNode(node)">Delete</button>
+                        <button class="btn btn-primary btn-xs" data-ng-click="editNode(node)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+   
+</div>
+
+<div class="col-md-12" data-ng-show="mode=='addnewnode'">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color: cadetblue">
+            <h3 class="panel-title">
+                Add new Node
+            </h3>
+            
+
+        </div>
+        <div class="panel-body" style="padding-left:20%;padding-right:20%">
+
+            <label for="nodename" style="margin-top:10px">Node Name</label>
+            <input type="text" id="nodename" class="form-control" placeholder="Node Name" data-ng-model="newnodeobj.name" required=" ">
+            <label for=" nodeip" style="margin-top:10px">IP address</label>
+            <input type="text" id="nodeip" class="form-control" data-ng-model="newnodeobj.ip" placeholder="0" required="">
+
+
+            <button class="btn btn-primary btn-sm" data-ng-click="addNewNode()" style="margin:10px" >Add node</button>
+            <button class="btn btn-primary btn-sm" data-ng-click="mode='nodelist'" style="margin:10px">Cancel</button>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<div class="col-md-12" data-ng-show="mode=='editnode'">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background-color: cadetblue">
+            <h3 class="panel-title">
+                Add new Node
+            </h3>
+            
+
+        </div>
+        <div class="panel-body" style="padding-left:20%;padding-right:20%">
+
+            <label for="nodename" style="margin-top:10px">Node Name</label>
+            <input type="text" id="nodename" class="form-control" placeholder="Node Name" data-ng-model="editnodeobj.name" required=" ">
+            <label for=" nodeip" style="margin-top:10px">IP address</label>
+            <input type="text" id="nodeip" class="form-control" data-ng-model="editnodeobj.ip" placeholder="0" required="">
+
+
+            <button class="btn btn-primary btn-sm" data-ng-click="updatenodechages()" style="margin:10px">Save</button>
+            <button class="btn btn-primary btn-sm" data-ng-click="mode='nodelist'" style="margin:10px">Cancel</button>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

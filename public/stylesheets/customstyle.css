@@ -1,0 +1,38 @@
+﻿@-webkit-keyframes example {
+    0%   {background-color:red; 
+          /*left:-20px; top:0px;position:absolute;float:none;*/ 
+          width:10px;
+         height:10px;
+
+    }   
+    /*100% {background-color:red; left:0px; top:0px;}*/
+}
+.block-animate{
+    animation-name: example;
+    animation-duration: 15s;
+
+
+}
+@keyframes notification-slide {
+  0% {
+    left: -365px;
+    
+    position:absolute;
+  }
+  /*50% {
+    left: -180px;
+    
+    position:absolute;
+  }*/
+  100% {
+    left: 0px;
+    
+    position:absolute;
+  }
+}
+
+.notification-animate{
+    animation-name: notification-slide;
+    animation-duration: 0.3s;
+    animation-timing-function:linear;
+}

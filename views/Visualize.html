@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suntrust BlockChain</title>
+    <link href="/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/jquery/jquery-2.1.4.min.js"></script>
+    <script src="/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/angular-route.js"></script>
+    <link href="/stylesheets/customstyle.css" rel="stylesheet" />
+    <script src="/javascripts/Visualize.js"></script>
+
+</head>
+<body data-ng-app="visualizeApp">
+    <div class="container-fluid" data-ng-controller="VisualizeController as visualize">
+        <div style="margin-bottom:5px">
+            <div class="alert alert-info notification-animate" style="margin:0px;text-align:center" data-ng-if="visualize.status=='info'">
+                <strong>Blockchain visualizer!</strong>
+            </div>
+            <div class="alert alert-success notification-animate" style="margin: 0px; text-align: center" data-ng-if="visualize.status=='success'">
+                <button type="button" class="close" data-ng-click="visualize.closealert()" data-dismiss="alert">x</button>
+                <strong>{{visualize.statusMessage}}</strong>
+            </div>
+            <div class="alert alert-danger notification-animate" style="margin: 0px; text-align: center" data-ng-if="visualize.status=='error'">
+                <button type="button" class="close" data-ng-click="visualize.closealert()" data-dismiss="alert">x</button>
+                <strong>{{visualize.statusMessage}}</strong>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            User action
+                        </h3>
+                        
+                    </div>
+
+                    <div class="panel-body">
+                    <a href="/admin" class = "btn btn-link" style="width: 100%">Manage</a>
+                        <label for="payeebank">Payee Bank</label>
+                        <select id="payeebank" class="form-control">
+                            <option value="volvo">WellsFargo</option>
+                            <option value="saab">Bank of America</option>
+                        </select>
+                        <label for="payeeaccountnumber" style="margin-top:10px">Payee Account Number</label>
+                        <input type="text" id="payeeaccountnumber" class="form-control" placeholder="16 digit number" required="">
+                        <label for="payeeaccountnumber" style="margin-top:10px">Amount to Transfer</label>
+                        <input type="text" id="payeeaccountnumber" class="form-control" placeholder="0" required="">
+
+                        
+                        <button class="btn btn-lg btn-primary btn-block" data-ng-click="visualize.makeTransfer()" type="submit" style="margin-top:20px">Transfer Now</button>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Block Chain
+                        </h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Block Chain
+                        </h3>
+                    </div>
+
+                    <div class="panel-body" style="padding:0px">
+                       
+                        <div id="suntrustNode" style="background-color: burlywood; height: 290px; width: 45%; float: left; margin: 10px; overflow-y:auto;margin-right:5px;margin-bottom:5px;border-radius:6px">
+                            <span style="width: 100%; float: left;top:0px; text-align: center; background-color: darkorange">Suntrust</span>
+                            <a href="#" data-ng-repeat="block in visualize.blockChain.nodeDictionary[0].blocks" title="Dismissible popover" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover" data-ng-class="$last && block.isNew?'block-animate':'sd'" style="background-color:white; margin:2px; height:50px;width:18.5%; float:left"></a>
+                            
+
+                        </div>
+                       
+                        
+                        <div style="float: left; width: 0%; height: 290px;padding-top:122px">
+                            <img src="/images/arrow1-right.gif" style="width: 45px;height:30px" />
+                            <img src="/images/arrow1-left.gif" style="width: 45px;height:30px" />
+                        </div>
+                        <div id="bofaNode" style="background-color: beige; height: 290px; width: 45%; float: right; margin: 10px;margin-bottom:5px; overflow-y: auto;border-radius:6px">
+                            <span style="width: 100%; float: left; text-align: center; background-color: darkorange">Bank Of America</span>
+                            <a data-ng-repeat="block in visualize.blockChain.nodeDictionary[1].blocks" style="background-color:white; margin:2px; height:50px;width:18.5%; float:left"></a>
+                        </div>
+                        <div style="float: left; width: 45%; height: 35px;padding-left:90px">
+                            <img src="/images/arrow1-down.gif" style="width: 30px; height: 35px" />
+                            <img src="/images/arrow1-up.gif" style="width: 30px; height: 35px" />
+                        </div>
+                        <div style="float: right; width: 45%; height: 35px; padding-left: 90px">
+                            <img src="/images/arrow1-down.gif" style="width: 30px; height: 35px" />
+                            <img src="/images/arrow1-up.gif" style="width: 30px; height: 35px" />
+                        </div>
+                        <div id="wellsfargoNode" style="background-color: lightcoral; height: 200px; width: 95%; float: left; margin: 10px; overflow-y: auto;border-radius:6px">
+                            <span style="width: 100%; float: left; text-align: center; background-color: darkorange">WellsFargo</span>
+                            <a data-ng-repeat="block in visualize.blockChain.nodeDictionary[2].blocks" style="background-color:white; margin:2px; height:50px;width:18.5%; float:left"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
