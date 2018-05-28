@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+<div style="background-color:red; height:100px">
+this is header
+</div>
+
+<div style="background-color:grey;display:table;width:100%">
+<div style="width:30%;display:table-cell">
+
+<div >
+widget 1</br>
+widget 1</br>
+widget 1</br>
+widget 1</br>
+</div>
+<div>
+widget 3</br>
+widget 3</br>
+widget 3</br>
+widget 3</br>
+</div>
+</div>
+
+<div style="width:70%;display:table-cell">
+<div >
+widget 2</br>
+widget 2</br>
+widget 2</br>
+widget 2</br>
+</div>
+<div>
+widget 4</br>
+widget 4</br>
+widget 4</br>
+widget 4</br>
+</div>
+<div>
+widget 5</br>
+widget 5</br>
+widget 5</br>
+widget 5</br>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>
